@@ -1,0 +1,102 @@
+binary search problem solve
+
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = (int)5000;
+int cnt;
+int a[N],b[N],c[N],d[N],e[N*N],f[N*N];
+
+int binary_search(int a[], int b)
+{
+    int st =0,lst = cnt-1,mid;
+    while(st<=lst)
+    {
+        int l=0,x = lst,s=0;
+        mid = (st+lst)/2;
+        if(a[mid]==b) {
+                int temp=mid+1;
+            while(mid>=l&&a[mid]==b)
+            {
+                mid--;
+                s++;
+                //printf("%d ", b);
+            }
+            //printf("\n");
+            while(temp<=x&&a[temp]==b)
+            {
+                temp++;
+                s++;
+                //printf("%d ", b);
+            }
+            //printf("%d\n",s);
+            return s;
+        }
+        if(a[mid]<b)
+        {
+            st = mid + 1;
+        } else
+        {
+            lst = mid - 1;
+        }
+    }
+    return 0;
+
+}
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    for(int i=0; i<n ; i++)
+    {
+        scanf("%d%d%d%d", &a[i], &b[i], &c[i],&d[i]);
+    }
+    int z=0;
+    for(int i=0; i<n ;i++)
+    {
+        for(int j=0; j<n ; j++)
+        {
+            e[z]= a[i]+b[j];
+            //printf("%d ", e[z]);
+            z++;
+            cnt=z;
+        }
+    }
+    //printf("\n");
+    z=0;
+    for(int i=0; i<n ;i++)
+    {
+        for(int j=0; j<n ; j++)
+        {
+            f[z]= (c[i]+d[j])*-1;
+            //printf("%d ", f[z]);
+            z++;
+            cnt=z;
+        }
+    }
+    //printf("\n");
+    sort(e,e+cnt);
+    sort(f,f+cnt);
+    //int st = 0; ed = 0;
+    int c=0,size1,cnt1=0;
+    for(int i=0; i<cnt;)
+    {
+        //printf("%d ", e[i]);
+       int  temp = e[i];
+        //printf("%d\n", temp);
+        size1=0;
+        while(e[i]==temp&&i<cnt)
+        {
+            size1++;
+            i++;
+            //printf("%d\n", temp);
+        }
+         //int x = temp * -1;
+         int size2 = binary_search(f,temp);
+         //printf("%d = %d %d\n",e[i], size1, size2);
+        cnt1 += (size1*size2);
+    }
+    printf("%d\n", cnt1);
+
+
+}
