@@ -1,0 +1,142 @@
+/*
+All submissions for this problem are available.In a small village, there are N number of temples in a row and rivers in front of each temple as shown in the figure for N = 3.
+
+                                        |  | ^ |  | ^ |  | ^
+where 
+                    |  | : river
+                     ^   : temple
+All N temples have n different Gods. Shubhanshu, a deist (who believes in a god but not in religion) wants to visit all the N temple. So, he decided to take X flower with him for the offering. As he crosses the river, to his surprise the X flowers became 2X and as he is a deist every God is equal to him and he decided to offer equally. After coming out from the last temple no flower should be left. Help Shubhanshu to find the number of flowers X he should take and the number of flowers he should offer to the god Y, so that equal number of flowers get in every temple and he should be left with no flower after coming out of the last temple.
+
+Note: X and Y must be minimum possible. The answer may be long so print % of 1000000007.
+
+Input:
+First line will contain T, number of testcases. Then the testcases follow.
+The first and only line of each test case contains an integer N.
+Output:
+For each testcase, output in a single line answer given X and Y in space-separated form.
+
+Constraints
+1≤T≤1000
+2≤N≤105
+Subtasks
+50 points : 1≤N≤20
+50 points : Original Constraints
+Sample Input:
+1
+2
+Sample Output:
+3 4
+EXPLANATION:
+
+|| ^ || ^
+
+Initially, he has 3 flowers, as he crosses the 1st river the flower gets doubled and it became 6 and on the 1st temple, he offered 4 flowers.
+Now he will have 6-4=2 flowers as he crosses the next river it will become 4 and on the next temple, that is last he will offer all the 4 flowers and at last, he will have no flowers left with him as 4-4=0.
+*/
+
+/*
+Author: Fuadul Hasan(fuadul202@gmail.com)
+BSMRSTU,Gopalganj
+*/
+
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <queue>
+#include <ctime>
+#include <cassert>
+#include <complex>
+#include <string>
+#include <cstring>
+#include <chrono>
+#include <random>
+#include <queue>
+#include <bitset>
+//#include<bits/stdc++.h>
+using namespace std;
+ 
+int         cinl()              {int x; scanf("%d", &x); return x;}
+long long   cinn()              {long long x; scanf("%lld", &x); return x;}
+double      scd()               {double x; scanf("%lf", &x); return x;}
+void        coutt(int x)        {printf("%d ", x);}
+ 
+#define  scll                   scll()
+#define  gcd(a,b)               __gcd(a,b)
+#define  lcm(a,b)               (a*b)/gcd(a,b)
+#define  PI                     acos(-1.0)
+#define  vi                     std::vector<int>
+#define  vll                    std::vector<ll>
+#define  vit                    vector<int> :: iterator
+#define  sit                    set<int> :: iterator
+#define  mpsi                   std::map<string, int>
+#define  pb                     push_back
+#define  ll                     long long int
+#define  ld                     long double
+#define  ull                    unsigned long long int
+#define  min3(a,b,c)            min(a,min(b,c))
+#define  min4(a,b,c,d)          min(d,min(a,min(b,c)))
+#define  max3(a,b,c)            max(a,max(b,c))
+#define  max4(a,b,c,d)          max(d,max(a,max(b,c)))
+#define  nl                     printf("\n");
+#define  no                     printf("No");
+#define  yes                    printf("Yes");
+#define  F                      first
+#define  S                      second
+
+typedef pair<int,int> ii;
+typedef std::vector<ii> vii;
+ 
+const int mod           = 1e9 + 7;
+const int inf           = (int)2e9 + 5;
+const ll  Inf           = (ll)1e18 + 5;
+const int N             = 1e6 + 5;
+const int nn           = 1e5;
+
+int power(int x)
+{
+    int res;
+    if(x==0) return 1;
+    else if(x==1) return 2;
+    else{
+        res = power(x/2);
+        if(x%2==0){
+            res = (res*res)%mod;
+        } else{
+            res = (((res*res)%mod)*2)%mod;
+        }
+    }
+    return res;
+}
+
+int solve()
+{
+   ll n;
+   cin>>n;
+   /*ll x = ((1<<n)-1)%1000000007;
+   ll y = (1<<n)%1000000007;*/
+   ll y = power(n);
+   cout<<y-1<<" "<<y<<endl;
+   return 0;
+}
+
+
+int main()
+{
+    int test = 1, tc = 0;
+    scanf("%d", &test);
+   // (void)getchar();
+    //cin >> test;
+    while (test--) {
+        //printf("Case %d: ", ++tc);
+        solve();
+    }
+ 
+    return 0;
+}
